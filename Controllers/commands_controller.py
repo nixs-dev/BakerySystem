@@ -1,7 +1,9 @@
 from Controllers import product_controller
 
 '''
-Each key represents a operation. Its value is a list and the indexes represents the following information: 
+Command prompt where the user can execute operations. For example, buy.
+
+The 'operations' dictionary stores the available commands. Each key represents a operation. Its value is a list and the indexes represents the following information: 
 
 	0 -> method responsible to execute the operation.
 	1 -> amount of indexes that the method needs
