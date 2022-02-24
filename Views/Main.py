@@ -1,5 +1,6 @@
 import time
 import os
+from Utils.Colors import Style
 from Controllers import connection_controller
 from Controllers import views_controller
 from threading import Thread
@@ -22,15 +23,15 @@ class MainView:
 		while True:
 			if self.state[0] is not None:
 				os.system("clear")
-				print(f"{self.state[1]}")
+				print(f"{Style.GREEN if self.state[0] else Style.RED}{self.state[1]}{Style.RESET}")
 				
 				if self.state[0]:
-					time.sleep(0.5)
-					views_controller.home()
+					time.sleep(0.3)
+					views_controller.login()
 				
 				break
 			
-			print(f"{self.anim[i]} Connecting to database", end="\r", flush=True)
+			print(f"{self.anim[i]} Conectando...", end="\r", flush=True)
 			
 			if i == len(self.anim)-1:
 				i = 0

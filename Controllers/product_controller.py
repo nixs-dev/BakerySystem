@@ -25,7 +25,7 @@ def get_all_products():
 	products = []
 		
 	for p in data_list:
-		product = ProductModel(p[0], p[1], p[2], p[3])
+		product = ProductModel(p["id"], p["_name"], p["price"], p["amount"])
 		products.append(product)
 		
 	return products

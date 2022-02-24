@@ -9,6 +9,6 @@ def connect_to_database():
 	response = database.connect()
 	
 	if response[0] == 1:
-		return [True, "Connected"]
+		return [True, "Conectado"]
 	else:
 		return [False, response[1]]

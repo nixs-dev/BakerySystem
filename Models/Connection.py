@@ -13,7 +13,7 @@ class Connection:
 				port = 3306,
 				user = "dev",
 				password = "sandbox",
-				database="padaria"
+				database="bakery"
 			)
 			
 			self.conn = db

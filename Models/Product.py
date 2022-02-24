@@ -2,7 +2,7 @@ class ProductModel:
 	
 	def __init__(self, id, _name, price, amount):
 		self.id = None if id is None else int(id)
-		self._name = _name
+		self.name = name
 		self.price = float(price)
 		self.amount = int(amount)
 	
