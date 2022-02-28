@@ -1,6 +1,6 @@
 class ProductModel:
 	
-	def __init__(self, id, _name, price, amount):
+	def __init__(self, id, name, price, amount):
 		self.id = None if id is None else int(id)
 		self.name = name
 		self.price = float(price)
@@ -10,7 +10,7 @@ class ProductModel:
 		return self.id
 		
 	def get_name(self):
-		return self._name
+		return self.name
 	
 	def get_price(self):
 		return "{0:.2f}".format(self.price)

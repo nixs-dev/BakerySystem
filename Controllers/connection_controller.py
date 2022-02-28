@@ -1,3 +1,4 @@
+from Controllers import views_controller
 from Models.Connection import Connection
 
 database = None
@@ -12,3 +13,10 @@ def connect_to_database():
 		return [True, "Conectado"]
 	else:
 		return [False, response[1]]
+
+def get_connection():
+	global database
+	
+	response = database.get_connection()
+	
+	return response

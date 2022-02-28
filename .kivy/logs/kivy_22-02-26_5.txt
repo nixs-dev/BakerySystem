@@ -1,0 +1,14 @@
+[INFO   ] Logger: Record log in /storage/emulated/0/Python/Testes/.kivy/logs/kivy_22-02-26_5.txt
+[INFO   ] Kivy: v2.0.0
+[INFO   ] Kivy: Installed at "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/site-packages/kivy/__init__.py"
+[INFO   ] Python: v3.9.7 (default, Oct  9 2021, 08:02:40) 
+[GCC 11.1.0]
+[INFO   ] Python: Interpreter at "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/bin/python3"
+[WARNING] stderr: Traceback (most recent call last):
+[WARNING] stderr:   File "/storage/emulated/0/Python/Testes/__init__.py", line 1, in <module>
+[WARNING] stderr:     from Controllers import views_controller
+[WARNING] stderr:   File "/storage/emulated/0/Python/Testes/Controllers/views_controller.py", line 2, in <module>
+[WARNING] stderr:     from Views.Main import MainView
+[WARNING] stderr:   File "/storage/emulated/0/Python/Testes/Views/Main.py", line 1, in <module>
+[WARNING] stderr:     from kivy.screen import Screen
+[WARNING] stderr: ModuleNotFoundError: No module named 'kivy.screen'

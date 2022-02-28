@@ -1,41 +1,33 @@
+from kivy.uix.screenmanager import ScreenManager, Screen
+from kivy.lang import Builder
+
 import time
-import os
-from Utils.Colors import Style
 from Controllers import connection_controller
-from Controllers import views_controller
 from threading import Thread
 
-class MainView:
-	state = [None, ""]
-	anim = ["\\", "|", "/", "-"]
 
-	def __init__(self):
-		self.start()
+class MainView(Screen):
+	state = [None, None]
 	
-	def connection_state(self):
-		self.state = connection_controller.connect_to_database()
+	def __init__(self, **kwargs):
+		super(MainView, self).__init__(**kwargs)
 		
-	def start(self):
-		i = 0
-		
+		self.build()
+
+	def build(self):
+		view = Builder.load_file("Views/kv/Main.kv")
+		self.add_widget(view)
+	       
+	def on_enter(self):
 		Thread(target=self.connection_state).start()
 		
-		while True:
-			if self.state[0] is not None:
-				os.system("clear")
-				print(f"{Style.GREEN if self.state[0] else Style.RED}{self.state[1]}{Style.RESET}")
-				
-				if self.state[0]:
-					time.sleep(0.3)
-					views_controller.login()
-				
-				break
-			
-			print(f"{self.anim[i]} Conectando...", end="\r", flush=True)
-			
-			if i == len(self.anim)-1:
-				i = 0
-			else:
-				i += 1
-			
-			time.sleep(0.3)
+	def connection_state(self):
+		time.sleep(5)
+		
+		self.state = connection_controller.connect_to_database()
+		
+		if self.state[0] is not None:
+			if self.state[0]:
+				self.manager.set_screen("Login")
+			else: 
+				pass

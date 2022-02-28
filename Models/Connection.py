@@ -13,7 +13,10 @@ class Connection:
 				port = 3306,
 				user = "dev",
 				password = "sandbox",
-				database="bakery"
+				database="bakery",
+				charset='utf8',
+				collation="utf8_general_ci",
+				use_unicode=True
 			)
 			
 			self.conn = db

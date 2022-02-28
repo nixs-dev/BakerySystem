@@ -8,7 +8,7 @@ def authentication(cpf, password):
 				"password": password
 			  }
 	
-	response = ClientDAO.authenticate(connection_controller.database, data)
+	response = ClientDAO.authenticate(connection_controller.get_connection(), data)
 	
 	return response
 
@@ -23,6 +23,6 @@ def signup(cpf, name, birthdate, email, p_phone, s_phone, cep, city, district, s
 				   }
 	
 	client = ClientModel(cpf, name, birthdate, email, phone_numbers, address, password)
-	response = ClientDAO.insert(connection_controller.database, client)
+	response = ClientDAO.insert(connection_controller.get_connection(), client)
 	
 	return response

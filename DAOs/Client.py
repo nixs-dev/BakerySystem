@@ -3,14 +3,14 @@ class ClientDAO:
 	
 	@staticmethod
 	def get_all(conn):
-		cursor = conn.get_connection().cursor(dictionary=True)
+		cursor = conn.cursor(dictionary=True)
 		cursor.execute("SELECT * FROM clients")
 		
 		return cursor.fetchall()
 	
 	@staticmethod
 	def authenticate(conn, data):
-		cursor = conn.get_connection().cursor(dictionary=True)
+		cursor = conn.cursor(dictionary=True)
 		
 		query = (
 				    	"SELECT * FROM clients"
@@ -31,7 +31,6 @@ class ClientDAO:
 	
 	@staticmethod
 	def insert(conn, client):
-		conn = conn.get_connection()
 		cursor = conn.cursor()
 		
 		query = (

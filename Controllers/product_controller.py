@@ -2,18 +2,9 @@ from DAOs.Product import ProductDAO
 from Models.Product import ProductModel
 from Controllers import connection_controller
 
-def insert_product(args):
-	'''
-		Arguments:
-			
-			0 -> Name
-			1 -> Price
-			2 -> Amount
-			
-	'''
-	
-	product = ProductModel(None, args[0], args[1], args[2])
-	sucess = ProductDAO.insert(connection_controller.database, product)
+def insert_product(name, price, amount):
+	product = ProductModel(None, name, price, amount)
+	sucess = ProductDAO.insert(connection_controller.get_connection(), product)
 	
 	if sucess:
 		return True
@@ -21,7 +12,7 @@ def insert_product(args):
 		return False
 	
 def get_all_products():
-	data_list = ProductDAO.get_all(connection_controller.database)
+	data_list = ProductDAO.get_all(connection_controller.get_connection())
 	products = []
 		
 	for p in data_list:

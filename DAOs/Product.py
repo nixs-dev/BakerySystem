@@ -3,14 +3,13 @@ class ProductDAO:
 	
 	@staticmethod
 	def get_all(conn):
-		cursor = conn.get_connection().cursor(dictionary=True)
+		cursor = conn.cursor(dictionary=True)
 		cursor.execute("SELECT * FROM products")
 		
 		return cursor.fetchall()
 	
 	@staticmethod
 	def insert(conn, product):
-		conn = conn.get_connection()
 		cursor = conn.cursor()
 		
 		query = (

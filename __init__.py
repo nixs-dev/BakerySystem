@@ -1,5 +1,24 @@
-import colorama
-from Controllers import views_controller
+import kivy
+from kivy.app import App
+from kivy.uix.screenmanager import ScreenManager, NoTransition
 
-colorama.init()
-views_controller.startApplication()
+from Views.Main import MainView
+from Views.Login import LoginView
+
+class Manager(ScreenManager):
+	def __init__(self):
+		super().__init__()
+		self.setup()
+		
+	def setup(self):
+		self.add_widget(MainView(name="Main"))
+		self.add_widget(LoginView(name="Login"))
+	
+	def set_screen(self, screen_name):
+		self.current = screen_name
+		
+class Application(App):
+	def build(self):
+		return Manager()
+
+Application().run()

@@ -1,0 +1,16 @@
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+
+FloatLayout:
+    canvas.before:
+        Color:
+            rgba: get_color_from_hex('#D3D4D5')
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    Image:
+        size_hint: .5, .5
+        pos_hint: {"center_x": .5, "center_y": .5}
+        source: 'Resources/anim/loading.zip'
+        anim_delay: 0
+        mipmap: True
+        allow_stretch: True

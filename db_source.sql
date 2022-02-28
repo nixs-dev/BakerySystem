@@ -1,4 +1,5 @@
-create database if not exists bakery;
+create database if not exists bakery DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+
 use bakery;
 
 create table if not exists products(
@@ -8,7 +9,7 @@ create table if not exists products(
     amount int not null,
     
     constraint pk_products primary key(id)
-);
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 create table if not exists clients (
     cpf bigint(11) not null,
@@ -26,4 +27,4 @@ create table if not exists clients (
     password varchar(30) not null,
     
     constraint pk_clients primary key (cpf)
-);
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;

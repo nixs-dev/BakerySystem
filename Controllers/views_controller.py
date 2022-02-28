@@ -1,21 +1,15 @@
-import os
-from Views.Main import MainView
-from Views.Login import LoginView
-from Views.SignUp import SignUpView
-from Views.Home import HomeView
+screen_manager = None
 
-def startApplication():
-	os.system("clear")
-	MainView()
+def main():
+	global screen_manager
+	screen_manager.current = "Main"
 
 def signup():
-	os.system("clear")
 	SignUpView()
 	
 def login():
-	os.system("clear")
-	LoginView()
+	global screen_manager
+	screen_manager.current = "Login"
 	
 def home():
-	os.system("clear")
 	HomeView()
