@@ -4,23 +4,23 @@ from kivy.lang import Builder
 from Controllers import client_controller
 
 class LoginView(Screen):
-    
+	view = None
+	
 	def __init__(self, **kwargs):
-		super(LoginView, self).__init__(**kwargs)
-		
+		super().__init__(**kwargs)
 		self.build()
 
 	def build(self):
-	       view = Builder.load_file("Views/kv/Login.kv")
-	       self.add_widget(view)
+	       self.view = Builder.load_file("Views/kv/Login.kv")
+	       self.add_widget(self.view)
 
 	def login(self):
-	       cpf = self.root.ids.cpf.text
-	       password = self.root.ids.password.text
+	       cpf = self.view.ids.cpf.text
+	       password = self.view.ids.password.text
 	       
 	       result = client_controller.authentication(cpf, password)
 	       
 	       if not result[0]:
-	       	self.root.ids.response.text = result[1]
+	       	self.view.ids.response.text = result[1]
 	       else:
 	       	self.manager.set_screen("Home")

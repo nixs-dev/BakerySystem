@@ -1,0 +1,27 @@
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+
+BoxLayout:
+	id: x
+	orientation: "vertical"
+	
+	canvas.before:
+		Color:
+			rgba: get_color_from_hex('#666666')
+		Rectangle:
+			pos: self.pos
+			size: self.size
+	
+	Label:
+		id: product_name
+		text: "PRODUCT_NAME"
+		font_size: 20
+	
+	Label:
+		id: product_price
+		text: "PRODUCT_PRICE"
+		font_size: 10
+		
+	Button:
+		text: "Comprar"
+		size_hint: 1, None
+		on_press: app.root.get_screen("Home").on_press_buy(root.id)

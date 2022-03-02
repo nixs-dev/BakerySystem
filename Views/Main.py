@@ -7,16 +7,16 @@ from threading import Thread
 
 
 class MainView(Screen):
+	view = None
 	state = [None, None]
 	
 	def __init__(self, **kwargs):
-		super(MainView, self).__init__(**kwargs)
-		
+		super().__init__(**kwargs)
 		self.build()
 
 	def build(self):
-		view = Builder.load_file("Views/kv/Main.kv")
-		self.add_widget(view)
+		self.view = Builder.load_file("Views/kv/Main.kv")
+		self.add_widget(self.view)
 	       
 	def on_enter(self):
 		Thread(target=self.connection_state).start()

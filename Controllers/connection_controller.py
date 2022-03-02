@@ -1,4 +1,3 @@
-from Controllers import views_controller
 from Models.Connection import Connection
 
 database = None

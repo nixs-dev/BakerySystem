@@ -1,4 +1,4 @@
-[INFO   ] Logger: Record log in /storage/emulated/0/Python/Testes/.kivy/logs/kivy_22-02-26_6.txt
+[INFO   ] Logger: Record log in /storage/emulated/0/Python/Testes/.kivy/logs/kivy_22-03-02_10.txt
 [INFO   ] Kivy: v2.0.0
 [INFO   ] Kivy: Installed at "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/site-packages/kivy/__init__.py"
 [INFO   ] Python: v3.9.7 (default, Oct  9 2021, 08:02:40) 
@@ -17,9 +17,8 @@
 [INFO   ] GL: Texture max units <16>
 [INFO   ] Window: auto add sdl2 input provider
 [INFO   ] Window: virtual keyboard not allowed, single mode, not docked
-[WARNING] stderr: Traceback (most recent call last):
-[WARNING] stderr:   File "/storage/emulated/0/Python/Testes/__init__.py", line 4, in <module>
-[WARNING] stderr:     views_controller.startApplication()
-[WARNING] stderr:   File "/storage/emulated/0/Python/Testes/Controllers/views_controller.py", line 8, in startApplication
-[WARNING] stderr:     MainView().run()
-[WARNING] stderr: AttributeError: 'MainView' object has no attribute 'run'
+[INFO   ] GL: NPOT texture support is available
+[INFO   ] Text: Provider: sdl2
+[WARNING] Base: Unknown <android> provider
+[INFO   ] Base: Start application main loop
+[INFO   ] Base: Leaving application in progress...
