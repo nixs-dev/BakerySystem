@@ -1,4 +1,5 @@
 from Controllers import connection_controller
+from Controllers import session_controller
 from Models.Client import ClientModel
 from DAOs.Client import ClientDAO
 
@@ -9,6 +10,9 @@ def authentication(cpf, password):
 			  }
 	
 	response = ClientDAO.authenticate(connection_controller.get_connection(), data)
+	
+	if response[0]:
+		session_controller.create(response[1])
 	
 	return response
 

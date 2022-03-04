@@ -28,3 +28,8 @@ create table if not exists clients (
     
     constraint pk_clients primary key (cpf)
 ) DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+create table if not exists deliveries (
+    id int(10) not null auto_increment,
+    
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;

@@ -6,6 +6,7 @@ from Views.Main import MainView
 from Views.Login import LoginView
 from Views.Home import HomeView
 
+
 class Manager(ScreenManager):
 	def __init__(self):
 		super().__init__()

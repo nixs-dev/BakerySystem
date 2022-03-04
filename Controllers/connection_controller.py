@@ -1,5 +1,6 @@
 from Models.Connection import Connection
 
+
 database = None
 
 def connect_to_database():
