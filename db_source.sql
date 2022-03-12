@@ -31,5 +31,21 @@ create table if not exists clients (
 
 create table if not exists deliveries (
     id int(10) not null auto_increment,
+    cpf_client bigint(11) not null,
+    id_product int(5) not null,
+    amount int not null,
+    final_price float not null,
     
+    city varchar(30) not null,
+    district varchar(20) not null,
+    street varchar(70) not null,
+    num int(3) not null,
+    
+    start_datetime datetime not null,
+    end_datetime datetime,
+    done bit default 0,
+    
+    constraint pk_deliveries primary key (id),
+    constraint fk_deliveries_clients foreign key (cpf_client) references clients (cpf),
+    constraint fk_deliveries_products foreign key (id_product) references products (id)
 ) DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
