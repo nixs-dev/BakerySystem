@@ -49,3 +49,11 @@ create table if not exists deliveries (
     constraint fk_deliveries_clients foreign key (cpf_client) references clients (cpf),
     constraint fk_deliveries_products foreign key (id_product) references products (id)
 ) DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+create table if not exists security (
+    cpf_client bigint(11) NOT null,
+    salt binary(32) not null,
+    
+    unique (salt),
+    constraint fk_security_clients foreign key (cpf_client) references clients (cpf) on delete cascade
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci

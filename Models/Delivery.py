@@ -1,6 +1,6 @@
 class DeliveryModel:
 	
-	def __init__(self):
+	def __init__(self, id, cpf_client, id_product, amount, final_price, address, start_datetime, end_datetime, done):
 		self.id  = id
 		self.cpf_client = cpf_client
 		self.id_product = id_product
@@ -27,7 +27,7 @@ class DeliveryModel:
 		return self.final_price
 	
 	def get_address(self):
-		return self.get_address
+		return self.address
 	
 	def get_start_datetime(self):
 		return self.start_datetime
