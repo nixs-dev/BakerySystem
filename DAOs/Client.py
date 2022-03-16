@@ -7,6 +7,15 @@ class ClientDAO:
 		cursor.execute("SELECT * FROM clients")
 		
 		return cursor.fetchall()
+		
+	@staticmethod
+	def get_by_cpf(cpf, conn):
+		cursor = conn.cursor(dictionary=True)
+		
+		cursor.execute("SELECT * FROM clients WHERE cpf = %s", (cpf,))
+		result = cursor.fetchall()
+		
+		return None if result == [] else result[0]
 	
 	@staticmethod
 	def authenticate(conn, data):

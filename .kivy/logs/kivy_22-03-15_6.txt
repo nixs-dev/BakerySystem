@@ -1,0 +1,59 @@
+[INFO   ] Logger: Record log in /storage/emulated/0/Python/Testes/.kivy/logs/kivy_22-03-15_6.txt
+[INFO   ] Kivy: v2.0.0
+[INFO   ] Kivy: Installed at "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/site-packages/kivy/__init__.py"
+[INFO   ] Python: v3.9.7 (default, Oct  9 2021, 08:02:40) 
+[GCC 11.1.0]
+[INFO   ] Python: Interpreter at "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/bin/python3"
+[INFO   ] Factory: 186 symbols loaded
+[INFO   ] Image: Providers: img_tex, img_dds, img_sdl2 (img_pil, img_ffpyplayer ignored)
+[INFO   ] Window: Provider: sdl2
+[INFO   ] GL: Using the "OpenGL ES 2" graphics system
+[INFO   ] GL: Backend used <sdl2>
+[INFO   ] GL: OpenGL version <b'OpenGL ES 3.1 v1.r7p0-02rel0.4ea33e6671ff828e33c99c982634cd65'>
+[INFO   ] GL: OpenGL vendor <b'ARM'>
+[INFO   ] GL: OpenGL renderer <b'Mali-T720'>
+[INFO   ] GL: OpenGL parsed version: 3, 1
+[INFO   ] GL: Texture max size <8192>
+[INFO   ] GL: Texture max units <16>
+[INFO   ] Window: auto add sdl2 input provider
+[INFO   ] Window: virtual keyboard not allowed, single mode, not docked
+[INFO   ] GL: NPOT texture support is available
+[WARNING] stderr: Traceback (most recent call last):
+[WARNING] stderr:   File "/storage/emulated/0/Python/Testes/__init__.py", line 27, in <module>
+[WARNING] stderr:     Application().run()
+[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/site-packages/kivy/app.py", line 949, in run
+[WARNING] stderr:     self._run_prepare()
+[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/site-packages/kivy/app.py", line 919, in _run_prepare
+[WARNING] stderr:     root = self.build()
+[WARNING] stderr:   File "/storage/emulated/0/Python/Testes/__init__.py", line 25, in build
+[WARNING] stderr:     return Manager()
+[WARNING] stderr:   File "/storage/emulated/0/Python/Testes/__init__.py", line 13, in __init__
+[WARNING] stderr:     self.setup()
+[WARNING] stderr:   File "/storage/emulated/0/Python/Testes/__init__.py", line 16, in setup
+[WARNING] stderr:     self.add_widget(MainView(name="Main"))
+[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/site-packages/kivy/uix/screenmanager.py", line 997, in add_widget
+[WARNING] stderr:     self.current = screen.name
+[WARNING] stderr:   File "kivy/properties.pyx", line 498, in kivy.properties.Property.__set__
+[WARNING] stderr:   File "kivy/properties.pyx", line 545, in kivy.properties.Property.set
+[WARNING] stderr:   File "kivy/properties.pyx", line 600, in kivy.properties.Property.dispatch
+[WARNING] stderr:   File "kivy/_event.pyx", line 1248, in kivy._event.EventObservers.dispatch
+[WARNING] stderr:   File "kivy/_event.pyx", line 1154, in kivy._event.EventObservers._dispatch
+[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/site-packages/kivy/uix/screenmanager.py", line 1062, in on_current
+[WARNING] stderr:     screen.dispatch('on_enter')
+[WARNING] stderr:   File "kivy/_event.pyx", line 709, in kivy._event.EventDispatcher.dispatch
+[WARNING] stderr:   File "/storage/emulated/0/Python/Testes/Views/Main.py", line 23, in on_enter
+[WARNING] stderr:     self.connection_state()
+[WARNING] stderr:   File "/storage/emulated/0/Python/Testes/Views/Main.py", line 36, in connection_state
+[WARNING] stderr:     self.manager.set_screen("Home")
+[WARNING] stderr:   File "/storage/emulated/0/Python/Testes/__init__.py", line 21, in set_screen
+[WARNING] stderr:     self.current = screen_name
+[WARNING] stderr:   File "kivy/properties.pyx", line 498, in kivy.properties.Property.__set__
+[WARNING] stderr:   File "kivy/properties.pyx", line 545, in kivy.properties.Property.set
+[WARNING] stderr:   File "kivy/properties.pyx", line 600, in kivy.properties.Property.dispatch
+[WARNING] stderr:   File "kivy/_event.pyx", line 1248, in kivy._event.EventObservers.dispatch
+[WARNING] stderr:   File "kivy/_event.pyx", line 1154, in kivy._event.EventObservers._dispatch
+[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/site-packages/kivy/uix/screenmanager.py", line 1045, in on_current
+[WARNING] stderr:     screen = self.get_screen(value)
+[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/site-packages/kivy/uix/screenmanager.py", line 1071, in get_screen
+[WARNING] stderr:     raise ScreenManagerException('No Screen with name "%s".' % name)
+[WARNING] stderr: kivy.uix.screenmanager.ScreenManagerException: No Screen with name "Home".

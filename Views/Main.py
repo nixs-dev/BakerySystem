@@ -1,9 +1,10 @@
+import time
+from threading import Thread
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.lang import Builder
 
-import time
 from Controllers import connection_controller
-from threading import Thread
+from Controllers import session_controller
 
 
 class MainView(Screen):
@@ -28,6 +29,12 @@ class MainView(Screen):
 		
 		if self.state[0] is not None:
 			if self.state[0]:
-				self.manager.set_screen("Login")
+				
+				session = session_controller.session_authentication()
+				
+				if session:
+					self.manager.set_screen("Home")
+				else:
+					self.manager.set_screen("Login")
 			else: 
 				pass

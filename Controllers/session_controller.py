@@ -1,22 +1,28 @@
-from Models.Session import SessionModel
+from DAOs.Session import SessionDAO
+from DAOs.Security import SecurityDAO
+from Controllers import connection_controller, client_controller
 
 
-current = None
+SESSION = None
 
-def logout():
-	global current
+def session_authentication():
+	global SESSION
 	
-	current = None
-
-def create(client):
-	global current
+	session = SessionDAO.get_session(SessionDAO.load_db())
 	
-	current = SessionModel(client)
-
-def get_session_data():
-	global current
+	if session is None:
+		return False
+		
 	
-	if current is not None:
-		return current.get_data()
+	cpf = session[0]
+	hashed_password = session[1]
+	
+	correct_password = SecurityDAO.get_hashed_password(cpf, connection_controller.get_connection())
+	
+	if correct_password is None:
+		return False
+	elif correct_password != hashed_password:
+		return False
 	else:
-		return None
+		SESSION = client_controller.get_by_cpf(cpf)
+		return True
