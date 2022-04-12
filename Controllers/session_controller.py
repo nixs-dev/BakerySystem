@@ -5,6 +5,14 @@ from Controllers import connection_controller, client_controller
 
 SESSION = None
 
+def create(data):
+	global SESSION
+	
+	data["password"] = SecurityDAO.get_hashed_password(data["cpf"], connection_controller.get_connection())
+	session_status = SessionDAO.insert(SessionDAO.load_db(), data)
+	
+	return True
+
 def session_authentication():
 	global SESSION
 	

@@ -34,7 +34,7 @@ class ClientDAO:
 			return [False, "Nenhum usuário cadastrado com esse CPF"]
 		else:
 			if result[0]["password"] == data["password"]:
-				return [True, result[0]]
+				return [True, None]
 			else:
 				return [False, "Senha incorreta"]
 	

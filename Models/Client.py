@@ -22,7 +22,12 @@ class ClientModel:
 		return self.email
 	
 	def get_phone_numbers(self):
-		return self.phone_numbers
+		phone_numbers = self.phone_numbers
+		
+		for i in range(0, 2):
+			phone_numbers[i] = None if self.phone_numbers[i] == "" else self.phone_numbers[i]
+			
+		return phone_numbers
 	
 	def get_address(self):
 		return self.address

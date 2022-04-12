@@ -25,10 +25,10 @@ class SessionDAO:
 		conn.commit()
 	
 	@staticmethod
-	def insert(cpf, password, conn):
+	def insert(conn, data):
 		cursor = conn.cursor()
 		query = "INSERT INTO session VALUES (?, ?)"
-		args = (cpf, password)
+		args = (data["cpf"], data["password"])
 		
 		cursor.execute(query, args)
 		conn.commit()
