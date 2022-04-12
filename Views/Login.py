@@ -27,7 +27,7 @@ class LoginView(Screen):
 	       
 		result = client_controller.authentication(cpf, password)
 	       
-		if not result[0]:
-			self.view.ids.response.text = result[1]
+		if  result is not None:
+			self.view.ids.response.text = result
 		else:
 			self.manager.set_screen("Home")

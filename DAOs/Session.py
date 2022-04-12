@@ -26,6 +26,8 @@ class SessionDAO:
 	
 	@staticmethod
 	def insert(conn, data):
+		SessionDAO.clear_session(conn)
+		
 		cursor = conn.cursor()
 		query = "INSERT INTO session VALUES (?, ?)"
 		args = (data["cpf"], data["password"])
@@ -33,6 +35,15 @@ class SessionDAO:
 		cursor.execute(query, args)
 		conn.commit()
 	
+	@staticmethod
+	def clear_session(conn):
+		cursor = conn.cursor()
+		query = "DELETE FROM session"
+		
+		cursor.execute(query)
+		conn.commit()
+	
+	@staticmethod
 	def get_session(conn):
 		cursor = conn.cursor()
 		query = "SELECT * FROM session"

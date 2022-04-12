@@ -3,6 +3,7 @@ from threading import Thread
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.lang import Builder
 
+from Views.Popup import AppPopup
 from Controllers import connection_controller
 from Controllers import session_controller
 
@@ -37,4 +38,4 @@ class MainView(Screen):
 				else:
 					self.manager.set_screen("Login")
 			else: 
-				pass
+				AppPopup(title="Info", content=self.state[1]).open()

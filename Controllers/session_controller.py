@@ -11,6 +11,8 @@ def create(data):
 	data["password"] = SecurityDAO.get_hashed_password(data["cpf"], connection_controller.get_connection())
 	session_status = SessionDAO.insert(SessionDAO.load_db(), data)
 	
+	SESSION = client_controller.get_by_cpf(data["cpf"])
+	
 	return True
 
 def session_authentication():
@@ -27,9 +29,8 @@ def session_authentication():
 	
 	correct_password = SecurityDAO.get_hashed_password(cpf, connection_controller.get_connection())
 	
-	if correct_password is None:
-		return False
-	elif correct_password != hashed_password:
+	if correct_password != hashed_password:
+		SessionDAO.clear_session(SessionDAO.load_db())
 		return False
 	else:
 		SESSION = client_controller.get_by_cpf(cpf)
