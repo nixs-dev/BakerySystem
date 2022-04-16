@@ -1,11 +1,11 @@
 class DeliveryModel:
 	
 	def __init__(self, id, cpf_client, id_product, amount, final_price, address, start_datetime, end_datetime, done):
-		self.id  = id
+		self.id  = int(id) if id is not None else None
 		self.cpf_client = cpf_client
 		self.id_product = id_product
 		self.amount = amount
-		self.final_price = final_price
+		self.final_price = float(final_price)
 		self.address = address
 		self.start_datetime = start_datetime
 		self.end_datetime = end_datetime
@@ -24,7 +24,7 @@ class DeliveryModel:
 		return self.amount
 	
 	def get_final_price(self):
-		return self.final_price
+		return "{0:.2f}".format(self.final_price)
 	
 	def get_address(self):
 		return self.address

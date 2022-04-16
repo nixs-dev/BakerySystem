@@ -2,6 +2,13 @@
 class ProductDAO:
 	
 	@staticmethod
+	def get_one(conn, id):
+		cursor = conn.cursor(dictionary=True)
+		cursor.execute("SELECT * FROM products WHERE id = %s", (id,))
+		
+		return cursor.fetchall()
+		
+	@staticmethod
 	def get_all(conn):
 		cursor = conn.cursor(dictionary=True)
 		cursor.execute("SELECT * FROM products")

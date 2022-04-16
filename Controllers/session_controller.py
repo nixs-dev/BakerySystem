@@ -30,8 +30,18 @@ def session_authentication():
 	correct_password = SecurityDAO.get_hashed_password(cpf, connection_controller.get_connection())
 	
 	if correct_password != hashed_password:
-		SessionDAO.clear_session(SessionDAO.load_db())
+		logout()
 		return False
 	else:
 		SESSION = client_controller.get_by_cpf(cpf)
 		return True
+
+def logout():
+	SessionDAO.clear_session(SessionDAO.load_db())
+	
+	return True
+	
+def get():
+	global SESSION
+	
+	return SESSION

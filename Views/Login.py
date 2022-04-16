@@ -18,6 +18,11 @@ class LoginView(Screen):
 		self.view = template
 		self.add_widget(self.view)
 	
+	def on_pre_enter(self):
+		self.view.ids.cpf.text = ""
+		self.view.ids.password.text = ""
+		self.view.ids.response.text = ""
+	
 	def go_signup_view(self, elem, link):
 		self.manager.set_screen("SignUp")
 

@@ -1,7 +1,6 @@
 #:import get_color_from_hex kivy.utils.get_color_from_hex
 
 BoxLayout:
-	id: x
 	orientation: "vertical"
 	
 	canvas.before:
@@ -22,6 +21,7 @@ BoxLayout:
 		font_size: 10
 		
 	Button:
+		id: buy_button
+		name: ""
 		text: "Comprar"
 		size_hint: 1, None
-		on_press: app.root.get_screen("Home").on_press_buy(root.id)

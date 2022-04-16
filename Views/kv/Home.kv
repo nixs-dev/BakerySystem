@@ -1,17 +1,66 @@
 #:import get_color_from_hex kivy.utils.get_color_from_hex
 
-ScrollView:
-	canvas.before:
-		Color:
-			rgba: get_color_from_hex('#D3D4D5')
-		Rectangle:
-			pos: self.pos
-			size: self.size
-                
-	GridLayout:
-		id: products_grid
-		cols: 2
-		spacing: 5, 5
-		height: self.minimum_height
-		row_default_height: 350
-		size_hint_y: None
+FloatLayout:
+	TabbedPanel:
+		id: tabs
+		size_hint: 1.0, 1.0
+		do_default_tab: False
+		
+		TabbedPanelItem:
+			id: products_tab
+			text: "Produtos"
+			
+			ScrollView:
+				canvas.before:
+					Color:
+						rgba: get_color_from_hex('#D3D4D5')
+					Rectangle:
+						pos: self.pos
+						size: self.size
+			                
+				GridLayout:
+					id: products_grid
+					cols: 2
+					spacing: 5, 5
+					height: self.minimum_height
+					row_default_height: 350
+					size_hint_y: None
+					
+		TabbedPanelItem:
+			id: profile_tab
+			text: "Perfil"
+			
+			ScrollView:
+				canvas.before:
+					Color:
+						rgba: get_color_from_hex('#D3D4D5')
+					Rectangle:
+						pos: self.pos
+						size: self.size
+			                
+				BoxLayout:
+					id: profile_info_grid
+					orientation: "vertical"
+					spacing: 5, 5
+					
+					Image:
+						source: "Resources/img/default_user_icon.png"
+					
+					Label:
+						id: profile_user_name
+						text: ""
+						
+					Label:
+						id: profile_user_cpf
+						text: ""
+						
+					BoxLayout:
+						orientation: "horizontal"
+						
+						Button:
+							id: save_profile_button
+							text: "Salvar"
+							
+						Button:
+							id: logout_button
+							text: "Sair"

@@ -20,3 +20,14 @@ def get_all_products():
 		products.append(product)
 		
 	return products
+
+def get_product_by_id(id):
+	data_list = ProductDAO.get_one(connection_controller.get_connection(), id)
+	
+	if data_list == []:
+		return None
+	
+	p = data_list[0]
+	product = ProductModel(p["id"], p["_name"], p["price"], p["amount"])
+		
+	return product
