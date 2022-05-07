@@ -1,65 +1,60 @@
 #:import get_color_from_hex kivy.utils.get_color_from_hex
-FloatLayout:
+
+MDFloatLayout:
+	
 	canvas.before:
-		Color:
-			rgba: get_color_from_hex('#D3D4D5')
 		Rectangle:
 			pos: self.pos
 			size: self.size
+			source: "Resources/img/authenticate_background.jpg"
+			
 	Image:
-		size_hint: .3, .3
+		size_hint: .5, .5
 		pos_hint: {"center_x": .5, "center_y": .75}
 		source: 'Resources/img/logo.png'
-	Label:
-		id: msg
-		size_hint: .7, .1
-		pos_hint: {"center_x": .5, "center_y": .55}
-		text:
-	GridLayout:
+		
+	MDGridLayout:
 		cols: 1
 		spacing: 5
 		size_hint: .7, .37
 		pos_hint: {"center_x": .5, "center_y": .3}
 		
-		Label:
-			text: "CPF"
-			size_hint_x: .3
-			text_size: self.size
-			halign: 'left'
-			valign: 'middle'
-			color: get_color_from_hex('#000000')
-		TextInput:
+		MDTextField:
 			id: cpf
+			mode: "rectangle"
+    		hint_text: "CPF"
+    		input_filter: "int"
 			multiline: False
-		Label:
-			text: "Senha"
-			size_hint_x: .3                
-			text_size: self.size
-			halign: 'left'
-			valign: 'middle'
-			color: get_color_from_hex('#000000')
-		TextInput:
+			
+		MDTextField:
 			id: password
+			mode: "rectangle"
+    		hint_text: "Senha"
 			multiline: False
 			password: True
-		Label:
+
+		MDLabel:
 			id: response
 			text: ""
-			size_hint_x: .3                
-			text_size: self.size
-			halign: 'left'
+			font_name: "Resources/font/main.ttf"
+			size_hint_x: 0.3
 			valign: 'middle'
 			color: get_color_from_hex('#FF0000')
-		Button:
+			
+		MDFlatButton:
 			id: ok_button
 			size_hint: 1., 1.
 			text: "Ok"
-		Label:
+			font_name: "Resources/font/main.ttf"
+			md_bg_color: get_color_from_hex("#9966FF")
+			
+		MDLabel:
 			id: signup_link
 			markup: True
 			text: "[ref=needsignup]Não tenho uma conta[/ref]"
 			size_hint_x: .3                
 			text_size: self.size
+			font_name: "Resources/font/main.ttf"
 			halign: 'right'
 			valign: "middle"
 			color: get_color_from_hex('#0000FF')

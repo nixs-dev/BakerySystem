@@ -38,3 +38,12 @@ class DeliveryDAO:
 		cursor.execute(query)
 		
 		return cursor.fetchall()
+	
+	@staticmethod
+	def get_by_user(conn, cpf_client):
+		cursor = conn.cursor(dictionary=True)
+		query = "SELECT * FROM deliveries WHERE cpf_client = %s"
+		
+		cursor.execute(query, (cpf_client,))
+		
+		return cursor.fetchall()

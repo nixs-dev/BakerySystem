@@ -2,8 +2,8 @@ from DAOs.Product import ProductDAO
 from Models.Product import ProductModel
 from Controllers import connection_controller
 
-def insert_product(name, price, amount):
-	product = ProductModel(None, name, price, amount)
+def insert_product(photo, name, price, amount):
+	product = ProductModel(None, name, price, amount, photo)
 	sucess = ProductDAO.insert(connection_controller.get_connection(), product)
 	
 	if sucess:
@@ -16,7 +16,7 @@ def get_all_products():
 	products = []
 		
 	for p in data_list:
-		product = ProductModel(p["id"], p["_name"], p["price"], p["amount"])
+		product = ProductModel(p["id"], p["_name"], p["price"], p["amount"], p["photo"])
 		products.append(product)
 		
 	return products
@@ -28,6 +28,6 @@ def get_product_by_id(id):
 		return None
 	
 	p = data_list[0]
-	product = ProductModel(p["id"], p["_name"], p["price"], p["amount"])
+	product = ProductModel(p["id"], p["_name"], p["price"], p["amount"], p["photo"])
 		
 	return product

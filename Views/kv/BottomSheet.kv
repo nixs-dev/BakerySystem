@@ -1,0 +1,74 @@
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+
+MDBoxLayout:
+    orientation: "vertical"
+    size_hint_y: None
+	padding: 3, 3
+    height: "400dp"
+    
+    canvas.after:
+    	Color:
+    		rgba: get_color_from_hex("#000000FF")
+    	Line:
+    		width: 3
+    		rectangle: self.x, self.y, self.width, self.height
+    
+	MDBoxLayout:
+		orientation: "horizontal"
+		spacing: 5
+		size_hint_y: 0.5
+		
+		Image:
+			id: product_info_photo
+			source: "Resources/img/not_product_photo_symbol.png"
+			size_hint_y: 1.0
+			
+		MDGridLayout:
+			cols: 1
+			padding: 0, 10
+			spacing: self.height//10
+			
+			MDLabel:
+				id: product_info_name
+				text: "Nome: "
+				font_size: root.height//20
+				size_hint_y: None
+				height: self.font_size
+				
+			MDLabel:
+				id: product_info_price
+				text: "Preço: "
+				font_size: root.height//20
+				size_hint_y: None
+				height: self.font_size
+				
+			MDLabel:
+				id: product_info_available_amount
+				text: "No estoque: "
+				font_size: root.height//20
+				size_hint_y: None
+				height: self.font_size
+				
+			MDTextField:
+				id: product_info_amount
+				mode : "rectangle"
+				multline: False
+				input_filter: "int"
+				hint_text: "Amount"
+				size_hint: None, None
+					
+	MDFloatLayout:
+		size_hint_y: 0.1
+		
+		canvas.before:
+			Color:
+				rgba: 0.8, 0.8, 0.8, 1
+			Rectangle:
+				pos: self.pos
+				size: self.size
+				
+		MDRaisedButton:
+			id: make_delivery_button
+			text: "Realizar pedido"
+			pos_hint: {"center_x": 1 - self.width/root.width/2, "center_y": 0.5}
+			md_bg_color: get_color_from_hex("#9966FF")

@@ -5,7 +5,7 @@ class SessionDAO:
 	db_path = "LocalData/SESSION.db"
 	db_source = (
 							"CREATE TABLE IF NOT EXISTS session ("
-							"	cpf BIGINT(11) NOT NULL,"
+							"	cpf VARCHAR(11) NOT NULL,"
 							"	password VARCHAR(500) NOT NULL"
 							");"
 	)

@@ -1,66 +1,161 @@
 #:import get_color_from_hex kivy.utils.get_color_from_hex
+#:include Views/kv/CustomWidgets/ClickableImage.kv
+#:include Views/kv/CustomWidgets/Tab.kv
 
-FloatLayout:
-	TabbedPanel:
-		id: tabs
-		size_hint: 1.0, 1.0
-		do_default_tab: False
+MDBoxLayout:
+	orientation: "vertical"
+	
+	canvas.before:
+		Color:
+			rgba: get_color_from_hex('#D3D4D5')
+		Rectangle:
+			pos: self.pos
+			size: self.size
+			source: "Resources/img/home_background.jpg"
+	
+	BoxLayout:
+		size_hint: 1, 0.1
+		spacing: self.width//3
+		orientation: "horizontal"
 		
-		TabbedPanelItem:
+		Image:
+			size_hint: None, 0.8
+			width: root.width/2
+			source: "Resources/img/title_header.png"
+		
+		Button:
+			id: settings_button
+			size_hint: None, 1
+			width: self.height
+			background_normal: "Resources/img/settings_icon.png"
+		
+	MDTabs:
+		id: tabs
+		size_hint: 1.0, 0.9
+		do_default_tab: False
+		font_name: "Resources/font/main.ttf"
+		background_color: get_color_from_hex("#33cccc")
+		tab_indicator_anim: True
+			
+		Tab:
 			id: products_tab
 			text: "Produtos"
 			
 			ScrollView:
-				canvas.before:
-					Color:
-						rgba: get_color_from_hex('#D3D4D5')
-					Rectangle:
-						pos: self.pos
-						size: self.size
-			                
 				GridLayout:
 					id: products_grid
 					cols: 2
 					spacing: 5, 5
 					height: self.minimum_height
+					col_default_width: self.width/2
 					row_default_height: 350
 					size_hint_y: None
 					
-		TabbedPanelItem:
+		Tab:
 			id: profile_tab
 			text: "Perfil"
 			
 			ScrollView:
-				canvas.before:
-					Color:
-						rgba: get_color_from_hex('#D3D4D5')
-					Rectangle:
-						pos: self.pos
-						size: self.size
-			                
-				BoxLayout:
+				MDGridLayout:
 					id: profile_info_grid
-					orientation: "vertical"
-					spacing: 5, 5
-					
-					Image:
+					cols: 1
+					spacing: 50
+					size_hint_y: None
+        			height: self.minimum_height
+					row_default_height: '130dp'
+                	row_force_default: True
+                
+					ClickableImage:
+						id: profile_photo
 						source: "Resources/img/default_user_icon.png"
 					
-					Label:
-						id: profile_user_name
-						text: ""
+					MDBoxLayout:
+						id: user_info
+						orientation: "vertical"
+						spacing: 30
 						
-					Label:
-						id: profile_user_cpf
-						text: ""
+						Label:
+							id: profile_user_name
+							text: ""
+							font_name: "Resources/font/main.ttf"
+							
+						Label:
+							id: profile_user_cpf
+							text: ""
+							font_name: "Resources/font/main.ttf"
+							
+						Label:
+							id: profile_user_email
+							text: ""
+							font_name: "Resources/font/main.ttf"
 						
-					BoxLayout:
+						MDBoxLayout:
+							orientation: "horizontal"
+							
+							Label:
+								id: profile_user_p_phone
+								text: ""
+								font_name: "Resources/font/main.ttf"
+							
+							Label:
+								id: profile_user_s_phone
+								text: ""
+								font_name: "Resources/font/main.ttf"
+						
+						MDTextField:
+							id: profile_user_password
+							size_hint_x: 0.6
+							mode: "rectangle"
+							password: True
+							multiline: False
+							text: ""
+						
+					MDBoxLayout:
+						orientation: "vertical"
+						spacing: 10
+							
+						Button:
+							id: show_deliveries_list
+							size_hint_y: 0.2
+							text: "Pedidos"
+							font_name: "Resources/font/main.ttf"
+							background_color: 0, 0, 0, 0
+							on_release: root.ids.scrollview.opacity = 1 if root.ids.scrollview.opacity == 0 else 0
+							
+						ScrollView:
+							id: scrollview
+							opacity: 0
+								
+							canvas.before:
+								Color:
+									rgba: 1, 1, 1, 1
+								Rectangle:
+									pos: self.pos
+									size: self.size
+										
+							MDGridLayout:
+								id: profile_deliveries_list
+								spacing: 10
+								cols: 1
+        						height: self.minimum_height
+								
+					MDBoxLayout:
 						orientation: "horizontal"
 						
 						Button:
 							id: save_profile_button
 							text: "Salvar"
+							background_normal: "Resources/img/normal_button.png"
+							background_down: "Resources/img/down_button.png"
+							font_name: "Resources/font/main.ttf"
+							font_size: self.height/7
+							color: 0, 0, 0, 1
 							
 						Button:
 							id: logout_button
 							text: "Sair"
+							background_normal: "Resources/img/normal_button.png"
+							background_down: "Resources/img/down_button.png"
+							font_name: "Resources/font/main.ttf"
+							font_size: self.height/7
+							color: 0, 0, 0, 1

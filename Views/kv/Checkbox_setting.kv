@@ -1,0 +1,19 @@
+MDBoxLayout:
+	orientation: "horizontal"
+	padding: 3, 3
+	
+	canvas.before:
+		Color:
+			rgba: get_color_from_hex("#333333")
+		Line:
+			width: 2
+			rectangle: self.x, self.y, self.width, self.height
+				
+	MDLabel:
+		id: setting_text
+		text: ""
+		font_name: "Resources/font/main.ttf"
+		color: get_color_from_hex("#000000")
+				
+	MDCheckbox:
+		id: checkbox

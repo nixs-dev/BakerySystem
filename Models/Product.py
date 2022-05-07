@@ -1,10 +1,11 @@
 class ProductModel:
 	
-	def __init__(self, id, name, price, amount):
+	def __init__(self, id, name, price, amount, photo):
 		self.id = None if id is None else int(id)
 		self.name = name
 		self.price = float(price)
 		self.amount = int(amount)
+		self.photo = photo
 	
 	def get_id(self):
 		return self.id
@@ -13,7 +14,10 @@ class ProductModel:
 		return self.name
 	
 	def get_price(self):
-		return "{0:.2f}".format(self.price)
+		return float("{0:.2f}".format(self.price))
 	
 	def get_amount(self):
 		return self.amount
+	
+	def get_photo(self):
+		return self.photo

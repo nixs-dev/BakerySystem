@@ -1,10 +1,18 @@
-BoxLayout:
+MDBoxLayout:
 	orientation: "vertical"
 	spacing: 6
 	
-	Label:
+	MDLabel:
 		id: content
+		font_name: "Resources/font/main.ttf"
+		font_size: 20
 		text: ""
+		
 	Button:
 		id: ok_button
 		text: "Ok"
+		background_normal: "Resources/img/normal_button.png"
+		background_down: "Resources/img/down_button.png"
+		font_name: "Resources/font/main.ttf"
+		font_size: self.height/7
+		color: 0, 0, 0, 1

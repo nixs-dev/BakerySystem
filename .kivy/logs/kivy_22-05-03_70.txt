@@ -1,0 +1,81 @@
+[INFO   ] Logger: Record log in /storage/emulated/0/Python/ArtStore/.kivy/logs/kivy_22-05-03_70.txt
+[INFO   ] Kivy: v2.0.0
+[INFO   ] Kivy: Installed at "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/site-packages/kivy/__init__.py"
+[INFO   ] Python: v3.9.7 (default, Oct  9 2021, 08:02:40) 
+[GCC 11.1.0]
+[INFO   ] Python: Interpreter at "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/bin/python3"
+[INFO   ] KivyMD: 1.0.0.dev0, git-Unknown, 2022-04-30 (installed at "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/site-packages/kivymd/__init__.py")
+[INFO   ] Factory: 186 symbols loaded
+[INFO   ] Image: Providers: img_tex, img_dds, img_sdl2, img_pil (img_ffpyplayer ignored)
+[INFO   ] Text: Provider: sdl2
+[INFO   ] Window: Provider: sdl2
+[INFO   ] GL: Using the "OpenGL ES 2" graphics system
+[INFO   ] GL: Backend used <sdl2>
+[INFO   ] GL: OpenGL version <b'OpenGL ES 3.1 v1.r7p0-02rel0.4ea33e6671ff828e33c99c982634cd65'>
+[INFO   ] GL: OpenGL vendor <b'ARM'>
+[INFO   ] GL: OpenGL renderer <b'Mali-T720'>
+[INFO   ] GL: OpenGL parsed version: 3, 1
+[INFO   ] GL: Texture max size <8192>
+[INFO   ] GL: Texture max units <16>
+[INFO   ] Window: auto add sdl2 input provider
+[INFO   ] Window: virtual keyboard not allowed, single mode, not docked
+[WARNING] FitImage: Note!
+In the near future the `FitImage` widget will be moved to the `kivymd.uix.fitimage` package.
+Use import of this widget like this:`from kivymd.uix.fitimage import FitImage`.
+[INFO   ] GL: NPOT texture support is available
+[WARNING] GL: Unpack subimage support is not available
+[WARNING] Deprecated property "<NumericProperty name=user_font_size>" of object "<kivymd.uix.button.button.MDIconButton object at 0x95eb6d48>" was accessed, it will be removed in a future version
+[WARNING] Deprecated property "<OptionProperty name=theme_text_color>" of object "<kivymd.uix.button.button.MDIconButton object at 0x95eb6d48>" was accessed, it will be removed in a future version
+[WARNING] KivyMD: The `MDToolbar` class has been deprecated. Use the `MDTopAppBar` class instead.
+[WARNING] Deprecated property "<StringProperty name=text>" of object "<kivy.factory.Tab object at 0x957f68e8>" was accessed, it will be removed in a future version
+[WARNING] Base: Unknown <android> provider
+[INFO   ] Base: Start application main loop
+[WARNING] Deprecated property "<ColorProperty name=text_color>" of object "<kivymd.uix.button.button.MDIconButton object at 0x95eb6d48>" was accessed, it will be removed in a future version
+[ERROR  ] Image: Not found <not_done_icon.png>
+[ERROR  ] Image: Not found <not_done_icon.png>
+[ERROR  ] Image: Not found <not_done_icon.png>
+[ERROR  ] Image: Not found <not_done_icon.png>
+[ERROR  ] Image: Not found <not_done_icon.png>
+[ERROR  ] Image: Not found <not_done_icon.png>
+[ERROR  ] Image: Not found <not_done_icon.png>
+[ERROR  ] Image: Not found <not_done_icon.png>
+[ERROR  ] Image: Not found <not_done_icon.png>
+[ERROR  ] Image: Not found <not_done_icon.png>
+[INFO   ] Base: Leaving application in progress...
+[WARNING] stderr: Traceback (most recent call last):
+[WARNING] stderr:   File "kivy/properties.pyx", line 861, in kivy.properties.ObservableDict.__getattr__
+[WARNING] stderr: KeyError: 'product_info_amount'
+[WARNING] stderr: 
+[WARNING] stderr: During handling of the above exception, another exception occurred:
+[WARNING] stderr: 
+[WARNING] stderr: Traceback (most recent call last):
+[WARNING] stderr:   File "/storage/emulated/0/Python/ArtStore/__init__.py", line 56, in <module>
+[WARNING] stderr:     Application().run()
+[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/site-packages/kivy/app.py", line 950, in run
+[WARNING] stderr:     runTouchApp()
+[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/site-packages/kivy/base.py", line 582, in runTouchApp
+[WARNING] stderr:     EventLoop.mainloop()
+[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/site-packages/kivy/base.py", line 347, in mainloop
+[WARNING] stderr:     self.idle()
+[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/site-packages/kivy/base.py", line 391, in idle
+[WARNING] stderr:     self.dispatch_input()
+[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/site-packages/kivy/base.py", line 342, in dispatch_input
+[WARNING] stderr:     post_dispatch_input(*pop(0))
+[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/site-packages/kivy/base.py", line 308, in post_dispatch_input
+[WARNING] stderr:     wid.dispatch('on_touch_up', me)
+[WARNING] stderr:   File "kivy/_event.pyx", line 709, in kivy._event.EventDispatcher.dispatch
+[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/site-packages/kivymd/uix/button/button.py", line 1007, in on_touch_up
+[WARNING] stderr:     return super().on_touch_up(touch)
+[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/site-packages/kivymd/uix/button/button.py", line 944, in on_touch_up
+[WARNING] stderr:     return super().on_touch_up(touch)
+[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/site-packages/kivymd/uix/behaviors/ripple_behavior.py", line 404, in on_touch_up
+[WARNING] stderr:     return super().on_touch_up(touch)
+[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/site-packages/kivy/uix/behaviors/button.py", line 179, in on_touch_up
+[WARNING] stderr:     self.dispatch('on_release')
+[WARNING] stderr:   File "kivy/_event.pyx", line 705, in kivy._event.EventDispatcher.dispatch
+[WARNING] stderr:   File "kivy/_event.pyx", line 1248, in kivy._event.EventObservers.dispatch
+[WARNING] stderr:   File "kivy/_event.pyx", line 1172, in kivy._event.EventObservers._dispatch
+[WARNING] stderr:   File "/storage/emulated/0/Python/ArtStore/Views/Home.py", line 113, in <lambda>
+[WARNING] stderr:     "amount": int(bottom_sheet.ids.product_info_amount.text)
+[WARNING] stderr:   File "kivy/properties.pyx", line 864, in kivy.properties.ObservableDict.__getattr__
+[WARNING] stderr: AttributeError: 'super' object has no attribute '__getattr__'

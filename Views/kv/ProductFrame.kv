@@ -1,27 +1,42 @@
 #:import get_color_from_hex kivy.utils.get_color_from_hex
 
-BoxLayout:
+MDBoxLayout:
 	orientation: "vertical"
-	
+	padding: 0, self.height/30
+		
 	canvas.before:
-		Color:
-			rgba: get_color_from_hex('#666666')
 		Rectangle:
 			pos: self.pos
 			size: self.size
-	
+			source: "Resources/img/product_frame_moldure.png"
+		
 	Label:
 		id: product_name
 		text: "PRODUCT_NAME"
-		font_size: 20
-	
+		pos_hint: {"center_x": 0.5, "center_y": 0.5}
+		font_name: "Resources/font/main.ttf"
+		font_size: root.height/20
+		
+	Image:
+		id: product_photo
+		source: "Resources/img/not_product_photo_symbol.png"
+		
 	Label:
 		id: product_price
-		text: "PRODUCT_PRICE"
-		font_size: 10
-		
+		size_hint_x: None
+		pos_hint: {"center_x": 0.5, "center_y": 0.5}
+		text: "0.00 Reais"
+		font_name: "Resources/font/main.ttf"
+		font_size: root.height/20
+			
 	Button:
 		id: buy_button
 		name: ""
 		text: "Comprar"
-		size_hint: 1, None
+		size_hint: 0.7, None
+		pos_hint: {"center_x": 0.5, "center_y": 0.5}
+		background_normal: "Resources/img/normal_button.png"
+		background_down: "Resources/img/down_button.png"
+		font_name: "Resources/font/main.ttf"
+		font_size: self.height/7
+		color: 0, 0, 0, 1

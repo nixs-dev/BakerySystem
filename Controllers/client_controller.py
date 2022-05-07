@@ -19,7 +19,7 @@ def authentication(cpf, password):
 	
 	return response[1]
 
-def signup(cpf, name, birthdate, email, p_phone, s_phone, cep, city, district, street, num, password):
+def signup(cpf, name, birthdate, email, p_phone, s_phone, profile_photo, cep, city, district, street, num, password):
 	phone_numbers = [p_phone, s_phone]
 	birthdate = DataConverter.br_usa_date(birthdate)
 	address = {
@@ -30,7 +30,7 @@ def signup(cpf, name, birthdate, email, p_phone, s_phone, cep, city, district, s
 			         	"num": num
 				   }
 	
-	client = ClientModel(cpf, name, birthdate, email, phone_numbers, address, password)
+	client = ClientModel(cpf, name, birthdate, email, phone_numbers, profile_photo, address, password)
 	response = ClientDAO.insert(connection_controller.get_connection(), client)
 	
 	if response[0]:
@@ -45,6 +45,7 @@ def get_by_cpf(cpf):
 	birthdate = response["birthdate"]
 	email = response["email"]
 	phone_numbers = [response["p_phone"], response["s_phone"]]
+	profile_photo = response["photo"]
 	address = {
 			         	"cep":  response["cep"],
 			         	"city": response["city"],
@@ -54,6 +55,6 @@ def get_by_cpf(cpf):
 	}
 	password = response["password"]
 	
-	client = ClientModel(cpf, name, birthdate, email, phone_numbers, address, password)
+	client = ClientModel(cpf, name, birthdate, email, phone_numbers, profile_photo, address, password)
 	
 	return client

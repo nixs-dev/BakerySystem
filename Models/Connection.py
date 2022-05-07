@@ -22,7 +22,7 @@ class Connection:
 			self.conn = db
 			return [1, db]
 		except InterfaceError:
-			return [0, "Error on trying to connect to the server"]
+			return [0, "Erro ao tentar conectar ao banco de dados"]
 	
 	def get_connection(self):
 		return self.conn

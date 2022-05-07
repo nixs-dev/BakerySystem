@@ -43,8 +43,8 @@ class ClientDAO:
 		cursor = conn.cursor()
 		
 		query = (
-				     	"INSERT INTO clients (cpf, _name, birthdate, email, p_phone, s_phone, cep, city, district, street, num, password)"
-				     	"VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+				     	"INSERT INTO clients (cpf, _name, birthdate, email, p_phone, s_phone, photo, cep, city, district, street, num, password)"
+				     	"VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
 				    )
 		args = (
 				  	client.get_cpf(),
@@ -53,6 +53,7 @@ class ClientDAO:
 				        client.get_email(),
 				        client.get_phone_numbers()[0],
 				        client.get_phone_numbers()[1],
+				        client.get_profile_photo(),
 				        client.get_address()["cep"],
 				        client.get_address()["city"],
 				        client.get_address()["district"],

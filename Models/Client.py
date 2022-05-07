@@ -1,11 +1,12 @@
 class ClientModel:
 	
-	def __init__(self, cpf, name, birthdate, email, phone_numbers, address, password):
+	def __init__(self, cpf, name, birthdate, email, phone_numbers, profile_photo, address, password):
 		self.cpf = cpf
 		self.name = name
 		self.birthdate = birthdate
 		self.email = email
 		self.phone_numbers = phone_numbers
+		self.profile_photo = profile_photo
 		self.address = address
 		self.password = password
 	
@@ -29,6 +30,9 @@ class ClientModel:
 			
 		return phone_numbers
 	
+	def get_profile_photo(self):
+		return self.profile_photo
+		
 	def get_address(self):
 		return self.address
 	

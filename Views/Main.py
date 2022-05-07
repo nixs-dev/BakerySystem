@@ -24,7 +24,7 @@ class MainView(Screen):
 		Thread(target=self.connection_state).start()
 		
 	def connection_state(self):
-		time.sleep(5)
+		time.sleep(10)
 		
 		self.state = connection_controller.connect_to_database()
 		

@@ -24,6 +24,32 @@ class Validations:
 		return f"({ddd}) {rest}"
 	
 	@staticmethod
+	def format_cpf(cpf):
+		cpf = Validations.get_numeric(cpf)
+		formatted_cpf = ""
+		points = 2
+		traces = 1
+		digits = 3
+		
+		for i in cpf:
+			formatted_cpf += i
+			digits -= 1
+			
+			if digits == 0:
+				if points > 0:
+					formatted_cpf += "."
+					points -= 1
+					digits = 3
+				elif traces > 0:
+					formatted_cpf += "-"
+					traces -= 1
+					digits = 2
+				else:
+					break
+		
+		return formatted_cpf
+		
+	@staticmethod
 	def format_date(date):
 		date = Validations.get_numeric(date)
 		edited_date = ""

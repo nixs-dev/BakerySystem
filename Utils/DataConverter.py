@@ -1,4 +1,7 @@
+import io
 import datetime
+from kivy.uix.image import CoreImage
+
 
 class DataConverter:
 	
@@ -19,3 +22,10 @@ class DataConverter:
 		new_date = "/".join(usa_date)
 		
 		return new_date
+	
+	@staticmethod
+	def binary_to_texture(binary):
+		data = io.BytesIO(binary)
+		img = CoreImage(data, ext="png").texture
+		
+		return img

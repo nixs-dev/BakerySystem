@@ -1,0 +1,44 @@
+BoxLayout:
+	orientation: "vertical"
+	size_hint_y: None
+	height: 70
+	padding: 2, 2
+		
+	canvas.before:
+		Color:
+			rgba: 0.5, 0.5, 0.5, 1
+		Rectangle:
+			pos: self.pos
+			size: self.size
+		
+	canvas.after:
+		Color:
+			rgba: 0, 0, 0, 1
+		Line:
+			width: 2
+			rectangle: self.x, self.y, self.width, self.height
+				
+	MDFloatLayout:
+		MDLabel:
+			id: amount_and_product
+			size_hint_x: 0.4
+			font_size: self.height/2
+			pos_hint: {"center_x": self.width/root.width, "center_y": 0.5}
+			text: "2 unidades de pão"
+			font_name: "Resources/font/main.ttf"
+			
+		Image:
+			id: delivery_status
+			size_hint_x: 0.1
+			pos_hint: {"center_x": 1 - self.width/root.width, "center_y": 0.5}
+			source: "not_done_icon.png"
+		
+	MDFloatLayout:
+		MDLabel:
+			id: delivery_time
+			text: "Demora de 0 min"
+			size_hint_x: 0.2
+			font_size: self.height/2
+			pos_hint: {"center_x": 1 - self.width/root.width, "center_y": 0.5}
+			font_name: "Resources/font/main.ttf"
+			

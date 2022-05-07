@@ -2,11 +2,11 @@
 
 FloatLayout:
     canvas.before:
-        Color:
-            rgba: get_color_from_hex('#ffcc99')
         Rectangle:
             pos: self.pos
             size: self.size
+            source: "Resources/img/init_background.jpg"
+    
     Image:
         id: tests
         size_hint: .5, .5

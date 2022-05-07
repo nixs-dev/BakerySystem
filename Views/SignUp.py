@@ -1,15 +1,20 @@
+import io
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.lang import Builder
 from kivy.uix.textinput import TextInput
 from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.image import CoreImage
 
 from Views.Popup import AppPopup
+from Views.FileChooser import AppFileChooser
 from Utils.Validations import Validations
+from Utils.DataConverter import DataConverter
 from Controllers import client_controller
 
 
 class SignUpView(Screen):
 	view = None
+	profile_photo = None
 	optional_fields = ["s_phone"]
 	validated_fields = {
 										"cpf": {"status": False, "hint": "CPF"},
@@ -27,13 +32,15 @@ class SignUpView(Screen):
 
 	def build(self):
 		template = Builder.load_file("Views/kv/SignUp.kv")
+		'''template.ids.back_button.bind(on_release=lambda x: self.manager.set_screen("Login"))
+		template.ids.profile_photo.bind(on_release=AppFileChooser(selection_callback=self.set_profile_photo).open)
 		template.ids.cpf.bind(text=self.validate_cpf)
 		template.ids.cep.bind(text=self.complete_address)
 		template.ids.birthdate.bind(text=self.validate_birthdate)
 		template.ids.email.bind(text=self.validate_email)
 		template.ids.p_phone.bind(text=self.validate_phone)
 		template.ids.s_phone.bind(text=self.validate_phone)
-		template.ids.ok_button.bind(on_release=self.signup)
+		template.ids.ok_button.bind(on_release=self.signup)'''
 		
 		self.view = template
 		self.add_widget(self.view)
@@ -73,6 +80,7 @@ class SignUpView(Screen):
 													   self.view.ids.email.text, 
 													   Validations.get_numeric(self.view.ids.p_phone.text),
 													   Validations.get_numeric(self.view.ids.s_phone.text),
+													   self.profile_photo,
 													   self.view.ids.cep.text,
 													   self.view.ids.city.text,
 													   self.view.ids.district.text,
@@ -87,6 +95,12 @@ class SignUpView(Screen):
 	
 	# Data integrity section
 	
+	def set_profile_photo(self, file, file_content):
+		img = DataConverter.binary_to_texture(file_content)
+		
+		self.view.ids.profile_photo.texture = img
+		self.profile_photo = file_content
+		
 	def validate_cpf(self, elem, changes):
 		status_cpf = Validations.validate_cpf(changes)
 		

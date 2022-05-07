@@ -6,18 +6,20 @@ create table if not exists products(
     id int(5) not null auto_increment,
     _name varchar(100) not null,
     price float not null,
-    amount int not null,
+    amount int unsigned not null,
+    photo longblob null,
     
     constraint pk_products primary key(id)
 ) DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 create table if not exists clients (
-    cpf bigint(11) not null,
+    cpf varchar(11) not null,
     _name varchar(100) not null,
     birthdate date not null,
     email varchar(100) not null,
     p_phone bigint(12) not null,
     s_phone bigint(12) null,
+    photo longblob null,
     
     cep int(8) not null,
     city varchar(30) not null,
@@ -31,9 +33,9 @@ create table if not exists clients (
 
 create table if not exists deliveries (
     id int(10) not null auto_increment,
-    cpf_client bigint(11) not null,
+    cpf_client varchar(11) not null,
     id_product int(5) not null,
-    amount int not null,
+    amount int unsigned not null,
     final_price float not null,
     
     city varchar(30) not null,
@@ -46,12 +48,12 @@ create table if not exists deliveries (
     done bit default 0,
     
     constraint pk_deliveries primary key (id),
-    constraint fk_deliveries_clients foreign key (cpf_client) references clients (cpf),
-    constraint fk_deliveries_products foreign key (id_product) references products (id)
+    constraint fk_deliveries_clients foreign key (cpf_client) references clients (cpf) on delete cascade,
+    constraint fk_deliveries_products foreign key (id_product) references products (id) on delete cascade
 ) DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 create table if not exists security (
-    cpf_client bigint(11) NOT null,
+    cpf_client varchar(11) NOT null,
     salt binary(32) not null,
     
     unique (salt),

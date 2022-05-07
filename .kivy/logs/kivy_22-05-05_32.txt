@@ -1,0 +1,66 @@
+[INFO   ] Logger: Record log in /storage/emulated/0/Python/ArtStore/.kivy/logs/kivy_22-05-05_32.txt
+[INFO   ] Kivy: v2.0.0
+[INFO   ] Kivy: Installed at "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/site-packages/kivy/__init__.py"
+[INFO   ] Python: v3.9.7 (default, Oct  9 2021, 08:02:40) 
+[GCC 11.1.0]
+[INFO   ] Python: Interpreter at "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/bin/python3"
+[INFO   ] KivyMD: 1.0.0.dev0, git-Unknown, 2022-04-30 (installed at "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/site-packages/kivymd/__init__.py")
+[INFO   ] Factory: 186 symbols loaded
+[INFO   ] Image: Providers: img_tex, img_dds, img_sdl2, img_pil (img_ffpyplayer ignored)
+[INFO   ] Text: Provider: sdl2
+[INFO   ] Window: Provider: sdl2
+[INFO   ] GL: Using the "OpenGL ES 2" graphics system
+[INFO   ] GL: Backend used <sdl2>
+[INFO   ] GL: OpenGL version <b'OpenGL ES 3.1 v1.r7p0-02rel0.4ea33e6671ff828e33c99c982634cd65'>
+[INFO   ] GL: OpenGL vendor <b'ARM'>
+[INFO   ] GL: OpenGL renderer <b'Mali-T720'>
+[INFO   ] GL: OpenGL parsed version: 3, 1
+[INFO   ] GL: Texture max size <8192>
+[INFO   ] GL: Texture max units <16>
+[INFO   ] Window: auto add sdl2 input provider
+[INFO   ] Window: virtual keyboard not allowed, single mode, not docked
+[WARNING] FitImage: Note!
+In the near future the `FitImage` widget will be moved to the `kivymd.uix.fitimage` package.
+Use import of this widget like this:`from kivymd.uix.fitimage import FitImage`.
+[INFO   ] GL: NPOT texture support is available
+[WARNING] GL: Unpack subimage support is not available
+[WARNING] stderr: Traceback (most recent call last):
+[WARNING] stderr:   File "/storage/emulated/0/Python/ArtStore/__init__.py", line 56, in <module>
+[WARNING] stderr:     Application().run()
+[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/site-packages/kivy/app.py", line 949, in run
+[WARNING] stderr:     self._run_prepare()
+[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/site-packages/kivy/app.py", line 919, in _run_prepare
+[WARNING] stderr:     root = self.build()
+[WARNING] stderr:   File "/storage/emulated/0/Python/ArtStore/__init__.py", line 37, in build
+[WARNING] stderr:     self.screen_manager = Manager()
+[WARNING] stderr:   File "/storage/emulated/0/Python/ArtStore/__init__.py", line 16, in __init__
+[WARNING] stderr:     self.setup()
+[WARNING] stderr:   File "/storage/emulated/0/Python/ArtStore/__init__.py", line 21, in setup
+[WARNING] stderr:     self.add_widget(SignUpView(name="SignUp"))
+[WARNING] stderr:   File "/storage/emulated/0/Python/ArtStore/Views/SignUp.py", line 31, in __init__
+[WARNING] stderr:     self.build()
+[WARNING] stderr:   File "/storage/emulated/0/Python/ArtStore/Views/SignUp.py", line 34, in build
+[WARNING] stderr:     template = Builder.load_file("Views/kv/SignUp.kv")
+[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/site-packages/kivy/lang/builder.py", line 306, in load_file
+[WARNING] stderr:     return self.load_string(data, **kwargs)
+[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/site-packages/kivy/lang/builder.py", line 373, in load_string
+[WARNING] stderr:     parser = Parser(content=string, filename=fn)
+[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/site-packages/kivy/lang/parser.py", line 402, in __init__
+[WARNING] stderr:     self.parse(content)
+[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/site-packages/kivy/lang/parser.py", line 511, in parse
+[WARNING] stderr:     objects, remaining_lines = self.parse_level(0, lines)
+[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/site-packages/kivy/lang/parser.py", line 593, in parse_level
+[WARNING] stderr:     current_object = ParserRule(self, ln, name, rlevel)
+[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/site-packages/kivy/lang/parser.py", line 254, in __init__
+[WARNING] stderr:     self._detect_selectors()
+[WARNING] stderr:   File "/data/user/0/ru.iiec.pydroid3/files/arm-linux-androideabi/lib/python3.9/site-packages/kivy/lang/parser.py", line 301, in _detect_selectors
+[WARNING] stderr:     raise ParserException(
+[WARNING] stderr: kivy.lang.parser.ParserException: Parser: File "/storage/emulated/0/Python/ArtStore/Views/kv/SignUp.kv", line 130:
+[WARNING] stderr: ...
+[WARNING] stderr:     128:			multiline: False
+[WARNING] stderr:     129:			password: True
+[WARNING] stderr: >>  130:'''	
+[WARNING] stderr:     131:		MDLabel:
+[WARNING] stderr:     132:			id: response
+[WARNING] stderr: ...
+[WARNING] stderr: Only one root object is allowed by .kv
