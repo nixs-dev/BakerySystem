@@ -8,12 +8,13 @@ class DeliveryDAO:
 		cursor = conn.cursor()
 		query = (
 						"INSERT INTO deliveries"
-						"(cpf_client, id_product, amount, final_price, city, district, street, num, start_datetime, end_datetime, done)"
-						"VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+						"(cpf_client, id_product, product_name, amount, final_price, city, district, street, num, start_datetime, end_datetime, done)"
+						"VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
 		)
 		args = (
 						delivery.get_cpf_client(),
 						delivery.get_id_product(),
+						delivery.get_product_name(),
 						delivery.get_amount(),
 						delivery.get_final_price(),
 						delivery.get_address()["city"],

@@ -1,6 +1,3 @@
-#:import get_color_from_hex kivy.utils.get_color_from_hex
-#:include Views/kv/CustomWidgets/ClickableImage.kv
-
 MDFloatLayout:
 	canvas.before:
 		Rectangle:
@@ -11,102 +8,139 @@ MDFloatLayout:
 	MDIconButton:
 		id: back_button
     	icon: "Resources/img/back_icon.png"
-    	pos_hint: {"center_x": 0 + self.height/root.height/2, "center_y": 1 - self.height/root.height/2}
+    	pos_hint: {"center_x": 0 + self.width/root.width/2, "center_y": 1 - self.height/root.height/2}
 	
 	MDBoxLayout:
 		id: form
 		orientation: "vertical"
-		size_hint: 0.7, 0.9
-		pos_hint: {"center_x": .5, "center_y": 0.5}
-
+		size_hint_y: 0.8
+		
 		ClickableImage:
 			id: profile_photo
 			source: "Resources/img/default_user_icon.png"
+			size_hint_y: 0.3
 			
-		MDBoxLayout:
-			id: personal_info
-			orientation: "horizontal"
+		Carousel:
+			id: fields_carousel
 			
-			canvas.before:
-				Color:
-					rgba: 0, 0, 0, 1
-				Line:
-					width: 2
-					rectangle: self.x, self.y, self.width, self.height
-			
-			MDTextField:
-				id: cpf
-				name: "cpf"
-				hint_text: "CPF"
-				input_filter: "int"
-				multiline: False
+	        MDBoxLayout:
+				id: personal_info
+				orientation: "vertical"
+				size_hint_y: None
+				pos_hint: {"center_x": .5, "center_y": 0.5}
+				padding: 20, 20
 				
-			MDTextField:
-				id: birthdate
-				name: "birthdate"
-				hint_text: "Nascimento"
-				input_filter: "int"
-				multiline: False
+				MDTextField:
+					id: cpf
+					name: "cpf"
+					hint_text: "CPF"
+					input_filter: "int"
+					multiline: False
+					
+				MDTextField:
+					id: birthdate
+					name: "birthdate"
+					hint_text: "Nascimento"
+					multiline: False
+					
+	        MDBoxLayout:
+				orientation: "vertical"
+				size_hint_y: None
+				pos_hint: {"center_x": .5, "center_y": 0.5}
+				padding: 20, 20
 				
-		MDBoxLayout:
-			orientation: "vertical"
-			
-			canvas.after:
-				Color:
-					rgba: 0, 0, 0, 1
-				Line:
-					width: 2
-					rectangle: self.x, self.y, self.width, self.height
-			
-			MDTextField:
-				id: name
-				name: "nome"
-				hint_text: "Nome"
-				multiline: False
+				MDTextField:
+					id: name
+					name: "nome"
+					hint_text: "Nome"
+					multiline: False
+					
+				MDTextField:
+					id: email
+					name: "email"
+					hint_text: "Email"
+					multiline: False
+					
+	        MDBoxLayout:
+				id: phone_numbers
+				orientation: "vertical"
+				size_hint_y: None
+				pos_hint: {"center_x": .5, "center_y": 0.5}
+				padding: 20, 20
 				
-			MDTextField:
-				id: email
-				name: "email"
-				hint_text: "Email"
-				multiline: False
+				MDTextField:
+					id: p_phone
+					name: "p_phone"
+					hint_text: "Telefone 1"
+					multiline: False
+					
+				MDTextField:
+					id: s_phone
+					name: "s_phone"
+					hint_text: "Telefone 2"
+					multiline: False
+			
+			MDBoxLayout:
+				id: address
+				orientation: "vertical"
+				size_hint_y: None
+				padding: 20, 20
+				
+				MDTextField:
+					id: cep
+					name: "cep"
+					hint_text: "CEP"
+					input_filter: "int"
+					multiline: False
+					
+				MDTextField:
+					id: city
+					name: "city"
+					hint_text: "Cidade"
+					multiline: False
+					
+				MDTextField:
+					id: district
+					name: "district"
+					hint_text: "Bairro"
+					multiline: False
+				
+				MDBoxLayout:
+					id: specific_info
+					orientation: "horizontal"
+					size_hint_y: None
+					spacing: 20
+					
+					MDTextField:
+						id: street
+						hint_text: "Rua"
+						multiline: False
+						
+					MDTextField:
+						id: num
+						hint_text: "Número"
+						multiline: False
+			
+			MDBoxLayout:
+				orientation: "vertical"
+				size_hint_y: None
+				pos_hint: {"center_x": .5, "center_y": 0.5}
+				padding: 20, 20
+				
+				MDTextField:
+					id: password
+					name: "password"
+					hint_text: "Senha"
+					multiline: False
+					password: True
 		
-		MDBoxLayout:
-			id: phone_numbers
-			orientation: "horizontal"
-			
-			MDTextField:
-				id: p_phone
-				name: "p_phone"
-				hint_text: "Telefone 1"
-				input_filter: "int"
-				multiline: False
-				
-			MDTextField:
-				id: s_phone
-				name: "s_phone"
-				hint_text: "Telefone 2"
-				input_filter: "int"
-				multiline: False
-				
-		MDBoxLayout:
-			id: address
-			orientation: "vertical"
-			
-			MDTextField:
-				id: cep
-				name: "cep"
-				hint_text: "CEP"
-				input_filter: "int"
-				multiline: False
-				
-			MDTextField:
-				id: city
-				name: "city"
-				hint_text: "Cidade"
-				multiline: False
-				
-			MDTextField:
-				id: district
-				name: "district"
-				hint_text: "Bairro"
-				multiline: False
+		Button:
+			id: ok_button
+			text: "Ok"
+			size_hint: 0.3, 0.3
+			pos_hint: {"center_x": 1 - self.width/root.width/2, "center_y": 0.5}
+			background_normal: "Resources/img/normal_button.png"
+			background_down: "Resources/img/down_button.png"
+			font_name: "Resources/font/main.ttf"
+			font_size: self.height/7
+			color: 0, 0, 0, 1

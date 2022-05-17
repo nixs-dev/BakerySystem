@@ -1,7 +1,3 @@
-#:import get_color_from_hex kivy.utils.get_color_from_hex
-#:include Views/kv/CustomWidgets/ClickableImage.kv
-#:include Views/kv/CustomWidgets/Tab.kv
-
 MDBoxLayout:
 	orientation: "vertical"
 	
@@ -13,9 +9,9 @@ MDBoxLayout:
 			size: self.size
 			source: "Resources/img/home_background.jpg"
 	
-	BoxLayout:
+	MDBoxLayout:
 		size_hint: 1, 0.1
-		spacing: self.width//3
+		spacing: self.width//4
 		orientation: "horizontal"
 		
 		Image:
@@ -23,26 +19,42 @@ MDBoxLayout:
 			width: root.width/2
 			source: "Resources/img/title_header.png"
 		
-		Button:
-			id: settings_button
-			size_hint: None, 1
-			width: self.height
-			background_normal: "Resources/img/settings_icon.png"
+		MDBoxLayout:
+			orientation: "horizontal"
+			size_hint: 0.35, 1
+			
+			Button:
+				id: notifications_button
+				width: self.height
+				background_normal: "Resources/img/notifications_icon.png"
+			
+			Button:
+				id: settings_button
+				width: self.height
+				background_normal: "Resources/img/settings_icon.png"
 		
 	MDTabs:
 		id: tabs
 		size_hint: 1.0, 0.9
 		do_default_tab: False
 		font_name: "Resources/font/main.ttf"
-		background_color: get_color_from_hex("#33cccc")
+		background_color: 0, 0, 0, 0
 		tab_indicator_anim: True
+		
+		canvas.before:
+			Color:
+				rgba: get_color_from_hex("#33cccc")
+			RoundedRectangle:
+				size: self.size
+				pos: self.pos
+				radius: [15, 15, 15, 15]
 			
 		Tab:
 			id: products_tab
 			text: "Produtos"
-			
+				    
 			ScrollView:
-				GridLayout:
+				MDGridLayout:
 					id: products_grid
 					cols: 2
 					spacing: 5, 5
@@ -50,6 +62,14 @@ MDBoxLayout:
 					col_default_width: self.width/2
 					row_default_height: 350
 					size_hint_y: None
+			
+			MDTextField:
+				id: search_bar
+				icon_right: "magnify"
+				hint_text: "Pesquisar"
+				mode: "fill"
+				radius: [20, 20, 20, 20]
+				pos_hint: {"center_y": 1 - self.height/root.height/2 - 0.05}
 					
 		Tab:
 			id: profile_tab
@@ -59,7 +79,7 @@ MDBoxLayout:
 				MDGridLayout:
 					id: profile_info_grid
 					cols: 1
-					spacing: 50
+					spacing: 35
 					size_hint_y: None
         			height: self.minimum_height
 					row_default_height: '130dp'
@@ -104,7 +124,9 @@ MDBoxLayout:
 						
 						MDTextField:
 							id: profile_user_password
+							name: "password"
 							size_hint_x: 0.6
+							pos_hint: {"center_x": 0.5}
 							mode: "rectangle"
 							password: True
 							multiline: False
@@ -135,9 +157,12 @@ MDBoxLayout:
 										
 							MDGridLayout:
 								id: profile_deliveries_list
-								spacing: 10
+								spacing: 2
 								cols: 1
         						height: self.minimum_height
+        						col_default_width: self.width
+								row_default_height: root.width * (15/100)
+								size_hint_y: None
 								
 					MDBoxLayout:
 						orientation: "horizontal"

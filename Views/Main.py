@@ -2,6 +2,7 @@ import time
 from threading import Thread
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.lang import Builder
+from kivy.clock import Clock
 
 from Views.Popup import AppPopup
 from Controllers import connection_controller
@@ -21,21 +22,24 @@ class MainView(Screen):
 		self.add_widget(self.view)
 	       
 	def on_enter(self):
+		Clock.schedule_once(lambda x: self.try_connect())
+		
+	def try_connect(self):
 		Thread(target=self.connection_state).start()
 		
 	def connection_state(self):
 		time.sleep(10)
-		
+			
 		self.state = connection_controller.connect_to_database()
-		
+			
 		if self.state[0] is not None:
 			if self.state[0]:
-				
+					
 				session = session_controller.session_authentication()
-				
+					
 				if session:
 					self.manager.set_screen("Home")
 				else:
 					self.manager.set_screen("Login")
 			else: 
-				AppPopup(title="Info", content=self.state[1]).open()
+				AppPopup(title="Info", content=self.state[1], ok_button_callback=self.try_connect).open()

@@ -3,6 +3,7 @@ from Controllers import session_controller
 from Models.Client import ClientModel
 from DAOs.Client import ClientDAO
 from DAOs.Security import SecurityDAO
+from DAOs.Settings import SettingsDAO
 from Utils.DataConverter import DataConverter
 
 
@@ -21,7 +22,7 @@ def authentication(cpf, password):
 
 def signup(cpf, name, birthdate, email, p_phone, s_phone, profile_photo, cep, city, district, street, num, password):
 	phone_numbers = [p_phone, s_phone]
-	birthdate = DataConverter.br_usa_date(birthdate)
+	birthdate = DataConverter.br_usa_strdate(birthdate)
 	address = {
 			         	"cep":  cep,
 			         	"city": city,
@@ -35,6 +36,7 @@ def signup(cpf, name, birthdate, email, p_phone, s_phone, profile_photo, cep, ci
 	
 	if response[0]:
 		SecurityDAO.insert(cpf, connection_controller.get_connection())
+		SettingsDAO.insert(connection_controller.get_connection(), cpf)
 		
 	return response[1]
 
@@ -58,3 +60,6 @@ def get_by_cpf(cpf):
 	client = ClientModel(cpf, name, birthdate, email, phone_numbers, profile_photo, address, password)
 	
 	return client
+
+def updates(changes):
+	result = ClientDAO.update(connection_controller.get_connection(), session_controller.get().get_cpf(), changes)

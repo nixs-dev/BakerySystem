@@ -1,5 +1,6 @@
 import kivy
 from kivymd.app import MDApp
+from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager, NoTransition
 from kivy.core.window import Window
 
@@ -33,9 +34,10 @@ class Application(MDApp):
 	}
 	
 	def build(self):
+		Builder.load_file("Views/kv/Includes.kv")
 		self.config_app()
-		
 		self.screen_manager = Manager()
+		
 		return self.screen_manager
 	
 	def config_app(self):

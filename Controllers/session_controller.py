@@ -45,3 +45,14 @@ def get():
 	global SESSION
 	
 	return SESSION
+
+def update():
+	global SESSION
+	
+	user = get()
+	data = {"cpf": user.get_cpf(), "password": user.get_password()}
+	
+	session_status = SessionDAO.insert(SessionDAO.load_db(), data)
+	SESSION = client_controller.get_by_cpf(data["cpf"])
+	
+	return True

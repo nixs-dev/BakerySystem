@@ -14,7 +14,7 @@ class ProductModel:
 		return self.name
 	
 	def get_price(self):
-		return float("{0:.2f}".format(self.price))
+		return float(self.price)
 	
 	def get_amount(self):
 		return self.amount

@@ -1,16 +1,17 @@
 import os.path
 from kivymd.uix.filemanager import MDFileManager
 from kivy.lang.builder import Builder
-
+from android.storage import primary_external_storage_path
 
 class AppFileChooser(MDFileManager):
-	main_path = "/sdcard/"
+	main_path = None
 	allow_ext = [".jpg", ".jpeg", ".png"]
 	
 	def __init__(self, selection_callback=None):
 		super().__init__()
 		
 		self.selection_callback = selection_callback
+		self.main_path = primary_external_storage_path()
 		self.ext = self.allow_ext
 	
 	def select_path(self, path):

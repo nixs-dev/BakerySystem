@@ -35,6 +35,7 @@ create table if not exists deliveries (
     id int(10) not null auto_increment,
     cpf_client varchar(11) not null,
     id_product int(5) not null,
+    product_name varchar(100) not null,
     amount int unsigned not null,
     final_price float not null,
     
@@ -48,8 +49,15 @@ create table if not exists deliveries (
     done bit default 0,
     
     constraint pk_deliveries primary key (id),
-    constraint fk_deliveries_clients foreign key (cpf_client) references clients (cpf) on delete cascade,
-    constraint fk_deliveries_products foreign key (id_product) references products (id) on delete cascade
+    constraint fk_deliveries_clients foreign key (cpf_client) references clients (cpf) on delete cascade on update cascade,
+    constraint fk_deliveries_products foreign key (id_product) references products (id) on delete cascade on update cascade
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+create table if not exists settings (
+    cpf_client varchar(11) NOT null,
+    notifications bit default 1,
+    
+    constraint fk_settings_clients foreign key (cpf_client) references clients (cpf) on delete cascade on update cascade
 ) DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 create table if not exists security (
@@ -57,5 +65,49 @@ create table if not exists security (
     salt binary(32) not null,
     
     unique (salt),
-    constraint fk_security_clients foreign key (cpf_client) references clients (cpf) on delete cascade
-) DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci
+    constraint fk_security_clients foreign key (cpf_client) references clients (cpf) on delete cascade on update cascade
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+create table if not exists notifications (
+    id int(5) not null auto_increment,
+    cpf_client varchar(11) NOT null,
+    text varchar(200),
+    received bit default 0,
+    timestamp datetime not null,
+    
+    constraint pk_notifications primary key(id),
+    constraint fk_notifications_clients foreign key (cpf_client) references clients (cpf) on delete cascade on update cascade
+) DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+
+DELIMITER //
+
+CREATE OR REPLACE TRIGGER delivery_finished
+AFTER UPDATE ON deliveries
+FOR EACH ROW
+BEGIN
+  SET @DONE = new.done;
+  SET @CPF = new.cpf_client;
+
+  IF @DONE = 1 THEN
+    INSERT INTO notifications (cpf_client, text, timestamp) VALUES (@CPF, "Produto entregue", NOW());
+  END IF;
+END;
+//
+
+
+CREATE OR REPLACE TRIGGER delivery_canceled
+AFTER DELETE ON deliveries
+FOR EACH ROW
+BEGIN
+  SET @PRODUCT = old.id_product;
+  SET @AMOUNT = old.amount;
+  SET @CPF = old.cpf_client;
+  
+  UPDATE products SET amount = amount + @AMOUNT WHERE id = @PRODUCT;
+  
+  INSERT INTO notifications (cpf_client, text, timestamp) VALUES (@CPF, "Pedido rejeitado", NOW());
+END;
+//
+
+DELIMITER ;

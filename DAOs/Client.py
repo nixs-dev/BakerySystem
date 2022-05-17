@@ -66,3 +66,22 @@ class ClientDAO:
 		conn.commit()
 		
 		return [True, None]
+		
+	@staticmethod
+	def update(conn, user, changes):
+		cursor = conn.cursor()
+		
+		query = "UPDATE clients SET"
+		args = []
+
+		for i, a in enumerate(changes):
+			query += f" {a} = %s"
+			query += "," if len(changes) - 1 > i else ""
+			args.append(changes[a])
+		
+		query += f" WHERE cpf = '{user}'"
+		
+		cursor.execute(query, args)
+		conn.commit()
+		
+		return [True, None]

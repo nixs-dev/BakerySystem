@@ -1,4 +1,3 @@
-import io
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.lang import Builder
 from kivy.uix.textinput import TextInput
@@ -32,7 +31,7 @@ class SignUpView(Screen):
 
 	def build(self):
 		template = Builder.load_file("Views/kv/SignUp.kv")
-		'''template.ids.back_button.bind(on_release=lambda x: self.manager.set_screen("Login"))
+		template.ids.back_button.bind(on_release=lambda x: self.manager.set_screen("Login"))
 		template.ids.profile_photo.bind(on_release=AppFileChooser(selection_callback=self.set_profile_photo).open)
 		template.ids.cpf.bind(text=self.validate_cpf)
 		template.ids.cep.bind(text=self.complete_address)
@@ -40,7 +39,7 @@ class SignUpView(Screen):
 		template.ids.email.bind(text=self.validate_email)
 		template.ids.p_phone.bind(text=self.validate_phone)
 		template.ids.s_phone.bind(text=self.validate_phone)
-		template.ids.ok_button.bind(on_release=self.signup)'''
+		template.ids.ok_button.bind(on_release=self.signup)
 		
 		self.view = template
 		self.add_widget(self.view)

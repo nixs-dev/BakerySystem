@@ -3,6 +3,7 @@ from kivy.lang import Builder
 
 from Controllers import client_controller
 
+
 class LoginView(Screen):
 	view = None
 	

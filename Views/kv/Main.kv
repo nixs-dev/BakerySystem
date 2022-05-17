@@ -6,12 +6,20 @@ FloatLayout:
             pos: self.pos
             size: self.size
             source: "Resources/img/init_background.jpg"
+            
+    MDBoxLayout:
+    	orientation: "vertical"
+    	size_hint: .7, .7
+    	pos_hint: {"center_x": .5, "center_y": .5}
     
-    Image:
-        id: tests
-        size_hint: .5, .5
-        pos_hint: {"center_x": .5, "center_y": .5}
-        source: 'Resources/anim/loading.zip'
-        anim_delay: 0
-        mipmap: True
-        allow_stretch: True
+	    Image:
+	    	source: "Resources/img/logo.png"
+	    	mipmap: True
+	        allow_stretch: True
+	        		
+	    Image:
+	        source: 'Resources/anim/loading.zip'
+	        anim_delay: 0
+	        mipmap: True
+	        allow_stretch: True
+	        size_hint_y: 0.3
