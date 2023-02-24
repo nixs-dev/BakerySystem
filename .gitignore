@@ -1,3 +1,3 @@
-__pycache__/
-.kivy/
+**/__pycache__
+**/.kivy
 tests.py

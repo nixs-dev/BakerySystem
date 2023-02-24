@@ -82,32 +82,30 @@ create table if not exists notifications (
 
 DELIMITER //
 
-CREATE OR REPLACE TRIGGER delivery_finished
+CREATE TRIGGER delivery_finished
 AFTER UPDATE ON deliveries
 FOR EACH ROW
 BEGIN
-  SET @DONE = new.done;
-  SET @CPF = new.cpf_client;
+  SET @DONE = INSERTED.done;
+  SET @CPF = INSERTED.cpf_client;
 
   IF @DONE = 1 THEN
     INSERT INTO notifications (cpf_client, text, timestamp) VALUES (@CPF, "Produto entregue", NOW());
   END IF;
-END;
-//
+END//
 
 
-CREATE OR REPLACE TRIGGER delivery_canceled
+CREATE TRIGGER delivery_canceled
 AFTER DELETE ON deliveries
 FOR EACH ROW
 BEGIN
-  SET @PRODUCT = old.id_product;
-  SET @AMOUNT = old.amount;
-  SET @CPF = old.cpf_client;
+  SET @PRODUCT = DELETED.id_product;
+  SET @AMOUNT = DELETED.amount;
+  SET @CPF = DELETED.cpf_client;
   
   UPDATE products SET amount = amount + @AMOUNT WHERE id = @PRODUCT;
   
   INSERT INTO notifications (cpf_client, text, timestamp) VALUES (@CPF, "Pedido rejeitado", NOW());
-END;
-//
+END//
 
 DELIMITER ;

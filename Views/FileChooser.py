@@ -1,7 +1,7 @@
 import os.path
 from kivymd.uix.filemanager import MDFileManager
 from kivy.lang.builder import Builder
-from android.storage import primary_external_storage_path
+#from android.storage import primary_external_storage_path
 
 class AppFileChooser(MDFileManager):
 	main_path = None
@@ -11,7 +11,7 @@ class AppFileChooser(MDFileManager):
 		super().__init__()
 		
 		self.selection_callback = selection_callback
-		self.main_path = primary_external_storage_path()
+		self.main_path = "/sdcard"
 		self.ext = self.allow_ext
 	
 	def select_path(self, path):
