@@ -1,10 +1,10 @@
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivymd.uix.menu import MDDropdownMenu
+from kivymd.uix.floatlayout import MDFloatLayout
+from kivymd.uix.tab import MDTabsBase
 from kivymd.uix.bottomsheet import MDCustomBottomSheet
-from kivy.app import App
 from kivy.clock import Clock
 from kivy.lang import Builder
-from threading import Thread
 
 from Views.Popup import AppPopup
 from Views.FileChooser import AppFileChooser
@@ -16,6 +16,9 @@ from Controllers import delivery_controller
 from Controllers import session_controller
 from Controllers import notifications_controller
 
+
+class Tab(MDFloatLayout, MDTabsBase):
+	pass
 
 class HomeView(Screen):
 	view = None

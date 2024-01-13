@@ -15,7 +15,6 @@ class Connection:
 				password = "sandbox",
 				database="bakery",
 				charset='utf8',
-				collation="utf8_general_ci",
 				use_unicode=True
 			)
 			
